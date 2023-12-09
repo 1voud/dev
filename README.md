@@ -7,7 +7,7 @@ Supports:
 
   - CloseDown
   - OpenUp
-  - operation
+  - Stop
   - StatusQuery
   - TargetPosition
 
