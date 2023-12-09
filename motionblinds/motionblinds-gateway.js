@@ -13,11 +13,17 @@ module.exports = function(RED) {
 
         this.gw.start();
         
-        console.log('MotionBlindsGateway Started');
+        node.status('MotionBlindsGateway Started');
+        this.gw.readAllDevices().then((result) => {
+            var globalContext = this.context().global;
+            globalContext.set("motion-blinds", result)
+            node.status('Read all devices');
+        })
+
 
         node.on("close", function() {
             gw.stop();
-            console.log('MotionBlindsGateway Stopped');
+            node.status('MotionBlindsGateway Stopped');
         });
     }
     RED.nodes.registerType("motionblinds-gateway",MotionBlindsGateway);

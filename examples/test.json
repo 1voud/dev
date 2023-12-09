@@ -1,51 +1,22 @@
 [
     {
-        "id": "9b45216e542dec88",
-        "type": "inject",
-        "z": "85144c0f82a7e451",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"value\": 80}",
-        "payloadType": "json",
-        "x": 130,
-        "y": 540,
-        "wires": [
-            [
-                "b619fc97efbc0f22"
-            ]
-        ]
-    },
-    {
-        "id": "b619fc97efbc0f22",
+        "id": "f54f603174068f97",
         "type": "motionblinds",
-        "z": "85144c0f82a7e451",
+        "z": "20ec08aead3d5281",
         "name": "Hoi",
         "gateway": "e1e9f4770702c1bf",
-        "x": 230,
-        "y": 640,
+        "x": 410,
+        "y": 200,
         "wires": [
             [
-                "46e4296fbd3e71df"
+                "588523019dc2253f"
             ]
         ]
     },
     {
-        "id": "46e4296fbd3e71df",
+        "id": "588523019dc2253f",
         "type": "debug",
-        "z": "85144c0f82a7e451",
+        "z": "20ec08aead3d5281",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -54,14 +25,139 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 470,
-        "y": 600,
+        "x": 610,
+        "y": 200,
         "wires": []
+    },
+    {
+        "id": "fe1f431a8ca9757d",
+        "type": "inject",
+        "z": "20ec08aead3d5281",
+        "name": "Position: 22",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"mac\":\"f4cfa2dd4a430001\",\"value\":22,\"action\":\"targetPosition\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "f54f603174068f97"
+            ]
+        ]
+    },
+    {
+        "id": "479f9861a92ae40f",
+        "type": "inject",
+        "z": "20ec08aead3d5281",
+        "name": "Position: 21",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"mac\":\"f4cfa2dd4a430001\",\"value\":21,\"action\":\"targetPosition\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "f54f603174068f97"
+            ]
+        ]
+    },
+    {
+        "id": "e8c45dc073c16ee1",
+        "type": "inject",
+        "z": "20ec08aead3d5281",
+        "name": "Position: 20",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"mac\":\"f4cfa2dd4a430001\",\"value\":20,\"action\":\"targetPosition\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "f54f603174068f97"
+            ]
+        ]
+    },
+    {
+        "id": "b163c1ae6a41cac4",
+        "type": "inject",
+        "z": "20ec08aead3d5281",
+        "name": "Open",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"mac\":\"f4cfa2dd4a430001\",\"value\":\"OpenUp\",\"action\":\"operation\"}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "f54f603174068f97"
+            ]
+        ]
+    },
+    {
+        "id": "93569656ef15690b",
+        "type": "inject",
+        "z": "20ec08aead3d5281",
+        "name": "StatusQuery",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"mac\":\"f4cfa2dd4a430001\",\"value\":\"StatusQuery\",\"action\":\"operation\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "f54f603174068f97"
+            ]
+        ]
     },
     {
         "id": "e1e9f4770702c1bf",
         "type": "motionblinds-gateway",
         "name": "Gateway",
-        "apikey": "<key>"
+        "apikey": "<your-key>"
     }
 ]
