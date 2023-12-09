@@ -18,7 +18,9 @@ module.exports = function (RED) {
             var globalContext = this.context().global;
             globalContext.set("motion-blinds", result)
             node.status('Read all devices');
-        })
+        }).catch((error) => {
+            node.error(error);
+        });
 
 
         node.on("close", function () {
