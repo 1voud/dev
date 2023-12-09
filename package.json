@@ -1,6 +1,6 @@
 {
   "name": "@1voud/node-red-motionblinds",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Motionblinds gateway for Node-RED",
   "main": "index.js",
   "homepage"     : "http://github.com/1voud/node-red-motionblinds",

@@ -1,65 +1,85 @@
-// import MotionGateway from 'motionblinds'
+module.exports = function (RED) {
 
-module.exports = function(RED) {
-    
     var mb = require('motionblinds');
 
     function MotionBlinds(config) {
 
+        RED.nodes.createNode(this, config);
 
-        RED.nodes.createNode(this,config);
-        
         var node = this;
 
-        this.gateway = RED.nodes.getNode(config.gateway);    
-        console.log(this.gateway);   
+        this.gateway = RED.nodes.getNode(config.gateway);
         const gw = this.gateway.gw;
-        // console.log(gw);
-        // gw.start();
-        // console.log('GW Started');
-        // const devices = gw.readAllDevices();
-        // const devices = [];
-        gw.readAllDevices().then((result) => {
-        // console.log(devices);
-            MotionBlinds.devices = result; 
-            var globalContext = this.context().global;
-            globalContext.set("motion-blinds", result)
-        })
+
         gw.on('report', (report) => {
             let msg = {};
-            msg.payload = {};
             msg.payload = report;
-            console.dir(report);
+
+            var globalContext = this.context().global;
+            blinds = globalContext.get("motion-blinds")
+            blinds.forEach((blind) => {
+                if (blind.mac === mac) {
+                    blind.data = report.data;
+                    blind.msgType = report.msgType;
+                    blind.msgID = report.msgID;
+                }
+            });
+
             node.send(msg);
         });
-        node.on('input', function(msg) {
-            // msg.payload = devices => {
-            //     setTimeout(resolveInner, 1000);
-            //   })
+
+        node.on('input', function (msg) {
             value = msg.payload.value;
-            gw.writeDevice("f4cfa2dd4a430001", "10000000", {
-                targetPosition: value,
-            }).then((ack) => {
-                // console.log(devices);
-                let msg = {};
-                msg.payload = ack;
-                node.send(msg);
-            })
-            // gw.readAllDevices().then((devices) => {
-            //     // console.log(devices);
-            //     let msg = {};
-            //     msg.payload = devices;
-            //     node.send(msg);
-            //   })
+            mac = msg.payload.mac;
+            let data = {};
+            switch (msg.payload.action) {
+                case "targetPosition":
+                    data["targetPosition"] = value;
+                    break;
+                case "operation":
+                    switch (value) {
+                        case "CloseDown":
+                            data["operation"] = 0;
+                            break;
+                        case "OpenUp":
+                            data["operation"] = 1;
+                            break;
+                        case "Stop":
+                            data["operation"] = 2;
+                            break;
+                        case "StatusQuery":
+                            data["operation"] = 5;
+                            break;
+                    }
+                    break;
+                default:
+                    return;
+            }
+            var globalContext = this.context().global;
+            blinds = globalContext.get("motion-blinds")
+            blinds.forEach((blind) => {
+                if (blind.mac === mac) {
+                    gw.writeDevice(mac, blind.deviceType, data).then((ack) => {
+                        let msg = {};
+                        msg.payload = ack;
+                        blind.data = ack.data;
+                        blind.msgType = ack.msgType;
+                        blind.msgID = ack.msgID;
+                        node.send(msg);
+                    });
+                }
+            });
+
+
         });
 
 
-        node.on("close", function() {
+        node.on("close", function () {
             gw.stop();
             console.log('GW stopped');
         });
 
     }
 
-    RED.nodes.registerType("motionblinds",MotionBlinds);
+    RED.nodes.registerType("motionblinds", MotionBlinds);
 }
