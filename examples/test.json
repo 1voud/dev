@@ -1,0 +1,67 @@
+[
+    {
+        "id": "9b45216e542dec88",
+        "type": "inject",
+        "z": "85144c0f82a7e451",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"value\": 80}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 540,
+        "wires": [
+            [
+                "b619fc97efbc0f22"
+            ]
+        ]
+    },
+    {
+        "id": "b619fc97efbc0f22",
+        "type": "motionblinds",
+        "z": "85144c0f82a7e451",
+        "name": "Hoi",
+        "gateway": "e1e9f4770702c1bf",
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "46e4296fbd3e71df"
+            ]
+        ]
+    },
+    {
+        "id": "46e4296fbd3e71df",
+        "type": "debug",
+        "z": "85144c0f82a7e451",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e1e9f4770702c1bf",
+        "type": "motionblinds-gateway",
+        "name": "Gateway",
+        "apikey": "<key>"
+    }
+]

@@ -1,0 +1,30 @@
+{
+  "name": "@1voud/node-red-motionblinds",
+  "version": "1.0.0",
+  "description": "Motionblinds gateway for Node-RED",
+  "main": "index.js",
+  "homepage"     : "http://github.com/1voud/node-red-motionblinds",
+  "repository"   : {
+    "type": "git",
+    "url": "https://github.com/1voud/node-red-motionblinds.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "motionblinds": "^2.3.1"
+  },
+  "keywords": [ "node-red" ],
+  "author": "Johan",
+  "license": "ISC",
+  "engines": {
+    "node": ">=10"
+  },
+  "node-red": {
+      "version": ">=2.0.0",
+      "nodes": {
+          "motionblinds": "motionblinds/motionblinds.js",
+          "motionblinds-gateway": "motionblinds/motionblinds-gateway.js" 
+      }
+  }
+}
