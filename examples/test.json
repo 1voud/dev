@@ -3,9 +3,9 @@
         "id": "f54f603174068f97",
         "type": "motionblinds",
         "z": "20ec08aead3d5281",
-        "name": "Hoi",
+        "name": "Gateway",
         "gateway": "e1e9f4770702c1bf",
-        "x": 410,
+        "x": 420,
         "y": 200,
         "wires": [
             [
@@ -157,7 +157,8 @@
     {
         "id": "e1e9f4770702c1bf",
         "type": "motionblinds-gateway",
-        "name": "Gateway",
-        "apikey": "<your-key>"
+        "name": "Meterkast",
+        "apikey": "<your-key>",
+        "ipaddress": "<gateway-ip-address>"
     }
 ]
