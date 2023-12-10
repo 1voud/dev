@@ -26,7 +26,7 @@ module.exports = function (RED) {
                 });
             } catch (error) {
                 node.error(error);
-            } 
+            }
 
             node.send(msg);
         });
@@ -57,7 +57,7 @@ module.exports = function (RED) {
                         }
                         break;
                     default:
-                    return;
+                        return;
                 }
                 var globalContext = this.context().global;
                 blinds = globalContext.get("motion-blinds") || {};

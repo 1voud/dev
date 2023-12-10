@@ -62,6 +62,7 @@ Releases:
     - Fix label of gateway
     - Fix report updates
     - Catch errors
+    - Improve documentation
 
 - v0.0.2 - Fix crash
     - Catch Exception crashing Node-RED
