@@ -51,6 +51,9 @@ Get the current status
         "action": "operation"
     }
 
+![Gateway](docs/gateway.png)
+![Sample Flow](docs/flow.png)
+
 Releases:
 - v0.0.3 - Enhancements and fixes
     - Add IP address to gateway settings
