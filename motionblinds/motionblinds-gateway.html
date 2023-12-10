@@ -3,10 +3,11 @@
         category: 'config',
         defaults: {
             name: {value: null},
-            apikey: {value:"apikey",required:true},
+            apikey: {value:"key-from-app",required:true},
+            ipaddress: {value:"gateway-ip-address",required:true}, 
         },
         label: function() {
-            return name||"motionblinds-gateway";
+            return this.name || "motionblinds-gateway";
         }
     });
 </script>
@@ -19,5 +20,9 @@
     <div class="form-row">
         <label for="node-config-input-apikey"><i class="fa fa-bookmark"></i> Api Key</label>
         <input type="text" id="node-config-input-apikey">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-ipaddress"><i class="fa fa-bookmark"></i> Gateway IP</label>
+        <input type="text" id="node-config-input-ipaddress">
     </div>
 </script>
