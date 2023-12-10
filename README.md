@@ -26,7 +26,7 @@ All devices states are saved in the global context using the key motion-blinds. 
 
 
 ## Samples:
-
+### Messages
 Move to target position:
 
     {
@@ -51,7 +51,9 @@ Get the current status
         "action": "operation"
     }
 
+### Define gateway
 ![Gateway](docs/gateway.png)
+### Sample flow
 ![Sample Flow](docs/flow.png)
 
 Releases:
