@@ -7,8 +7,8 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, n);
         var node = this;
         this.apikey = n.apikey;
-
-        this.gw = new mb.MotionGateway({ key: this.apikey });
+        this.gatewayIp = n.ipaddress;
+        this.gw = new mb.MotionGateway({ key: this.apikey, gatewayIp: this.gatewayIp });
         // console.log(this.gw);
 
         this.gw.start();
